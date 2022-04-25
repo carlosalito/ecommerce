@@ -1,0 +1,4 @@
+common:
+  appMessages:
+    failure:
+      genericListError: Ocorreu um erro ao listar seus objectos :(
