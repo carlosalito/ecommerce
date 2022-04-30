@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:e_commerce_desafio/data/data_source/clients/http_client.dart';
 import 'package:e_commerce_desafio/data/data_source/product/produtct_remote_datasource.dart';
+import 'package:e_commerce_desafio/domain/entities/product/product_entity.dart';
 import 'package:e_commerce_desafio/domain/entities/response/response_list.dart';
 import 'package:mockito/mockito.dart';
 
@@ -16,6 +17,6 @@ class HttpClientMock extends Mock implements HttpClient {
 
 class ProductDataSourceMock extends Mock implements ProductDataSource {
   @override
-  Future<ResponseList> getProducts(int page) =>
+  Future<ResponseList<ProductEntity>> getProducts(int page) =>
       super.noSuchMethod(Invocation.method(#getProducts, [page]), returnValue: Future.value(_FakeResponseList()));
 }

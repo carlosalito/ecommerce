@@ -1,14 +1,22 @@
 import 'package:e_commerce_desafio/di/injectable.dart';
+import 'package:e_commerce_desafio/infra/i18n/i18n_helper.dart';
+import 'package:e_commerce_desafio/infra/theme/app_icons.dart';
 import 'package:e_commerce_desafio/infra/theme/default_colors.dart';
 import 'package:e_commerce_desafio/infra/theme/theme_constants.dart';
+import 'package:e_commerce_desafio/presentation/page-navigator/screens/favorite/favorite_screen.dart';
+import 'package:e_commerce_desafio/presentation/page-navigator/screens/invoice/invoice_screen.dart';
+import 'package:e_commerce_desafio/presentation/page-navigator/screens/market/market_screen.dart';
+import 'package:e_commerce_desafio/presentation/page-navigator/screens/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'controller/page_navigator_controller.dart';
 
-class PageNavigatorScreen extends StatelessWidget {
-  PageNavigatorScreen({Key? key}) : super(key: key);
+class PageNavigatorScreen extends StatelessWidget with I18nStatelessTranslate {
+  PageNavigatorScreen({Key? key}) : super(key: key) {
+    setBaseTranslate('pageNavigator.');
+  }
 
   final controller = getIt<PageNavigatorController>();
 
@@ -37,11 +45,11 @@ class PageNavigatorScreen extends StatelessWidget {
               vertical: ThemeConstants.halfPadding,
             ),
             onTabChange: (int index) => controller.navigateToPage(index),
-            tabs: const [
-              GButton(icon: Icons.ac_unit, text: 'Page 1'),
-              GButton(icon: Icons.ac_unit, text: 'Page 2'),
-              GButton(icon: Icons.ac_unit, text: 'Page 3'),
-              GButton(icon: Icons.ac_unit, text: 'Page 4'),
+            tabs: [
+              GButton(icon: AppIcons.home, text: translate(context, 'page1')),
+              GButton(icon: AppIcons.favorite, text: translate(context, 'page2')),
+              GButton(icon: AppIcons.invoice, text: translate(context, 'page3')),
+              GButton(icon: AppIcons.account, text: translate(context, 'page4')),
             ],
           ),
         ),
@@ -52,22 +60,21 @@ class PageNavigatorScreen extends StatelessWidget {
 
   Widget _selectedPage(int page) {
     final Map<int, Widget> pagesMap = {
-      0: Container(
-          color: Colors.amber,
-          child: SafeArea(
-              child: Container(
-            color: Colors.amber,
-            child: Text('Market'),
-          ))),
-      1: Container(color: Colors.teal),
-      2: Container(color: Colors.redAccent),
-      3: Container(color: Colors.blue),
+      0: const MarketScreen(),
+      1: const FavoriteScreen(),
+      2: const InvoiceScreen(),
+      3: const ProfileScreen(),
     };
 
+    Widget pageWidget = pagesMap[0]!;
     if (page <= pagesMap.length - 1) {
-      return pagesMap[page]!;
+      pageWidget = pagesMap[page]!;
     }
 
-    return pagesMap[0]!;
+    return SafeArea(
+        child: Padding(
+      padding: const EdgeInsets.all(ThemeConstants.padding),
+      child: pageWidget,
+    ));
   }
 }

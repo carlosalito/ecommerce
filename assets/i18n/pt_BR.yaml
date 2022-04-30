@@ -2,3 +2,10 @@ common:
   appMessages:
     failure:
       genericListError: Ocorreu um erro ao listar seus objectos :(
+pageNavigator:
+  page1: Início
+  page2: Favoritos
+  page3: Compras
+  page4: Perfil
+  screen1:
+    title: Bom, frescos e orgânico#nVocê encontra aqui!

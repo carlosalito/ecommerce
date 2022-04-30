@@ -60,6 +60,10 @@ flutter:
     - assets/i18n/
 
   fonts:
+    - family: AppIcons
+      fonts:
+        - asset: assets/fonts/ecommerce.ttf
+
     - family: RedHatDisplay
       fonts:
         - asset: assets/fonts/RedHatDisplay-Regular.ttf

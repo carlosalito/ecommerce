@@ -88,7 +88,7 @@ List<ProductEntity> fakeProducts = [
   ),
 ];
 
-ResponseList responseProductList = ResponseList(
+ResponseList<ProductEntity> responseProductList = ResponseList<ProductEntity>(
   pageInfo: PageInfoResponse(totalPages: 2, totalRows: 11),
   data: fakeProducts,
 );

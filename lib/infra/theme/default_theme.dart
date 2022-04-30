@@ -20,7 +20,7 @@ class CustomThemes {
     textTheme: const TextTheme(
       headline1: TextStyle(
         fontFamily: "RedHatDisplay",
-        fontSize: 24,
+        fontSize: 22,
         fontWeight: FontWeight.w900,
         color: AppColors.primaryGray,
       ),

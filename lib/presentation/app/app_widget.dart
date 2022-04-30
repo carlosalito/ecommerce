@@ -1,5 +1,6 @@
 import 'package:e_commerce_desafio/infra/constants/named_routes.dart';
 import 'package:e_commerce_desafio/infra/theme/default_theme.dart';
+import 'package:e_commerce_desafio/presentation/app/app_config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -16,6 +17,28 @@ class AppWidget extends StatefulWidget {
 }
 
 class _AppWidgetState extends State<AppWidget> {
+  @override
+  initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) {
+      _observeFailure();
+    });
+  }
+
+  @override
+  void dispose() {
+    AppConfig.instance.onDispose();
+    super.dispose();
+  }
+
+  void _observeFailure() {
+    AppConfig.instance.streamError.stream.listen((failure) {
+      if (failure != null) {
+        print('Novo erro ${failure.toString()}');
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -14,11 +14,12 @@ class ProductDataSourceImpl implements ProductDataSource {
   ProductDataSourceImpl({required HttpClient http}) : _http = http;
 
   @override
-  Future<ResponseList> getProducts(int page) async {
+  Future<ResponseList<ProductEntity>> getProducts(int page) async {
     try {
       final _response = await _http.get('${Endpoints.getProducts}/$page');
       final _pageInfo = _response.data['pageInfo'];
       final _data = (_response.data['data'] as List).map((json) => ProductModel.fromJson(json).toEntity()).toList();
+
       final _result = ResponseList<ProductEntity>(
           pageInfo: PageInfoResponse(
             totalPages: (_pageInfo['totalPages'] as num).toInt(),
