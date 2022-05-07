@@ -20,31 +20,31 @@ class CustomThemes {
     textTheme: const TextTheme(
       headline1: TextStyle(
         fontFamily: "RedHatDisplay",
-        fontSize: 22,
+        fontSize: 22.0,
         fontWeight: FontWeight.w900,
         color: AppColors.primaryGray,
       ),
       headline2: TextStyle(
         fontFamily: "RedHatDisplay",
-        fontSize: 18,
+        fontSize: 18.0,
         fontWeight: FontWeight.w900,
         color: AppColors.primaryGray,
       ),
       headline3: TextStyle(
         fontFamily: "RedHatDisplay",
-        fontSize: 14,
+        fontSize: 14.0,
         fontWeight: FontWeight.w900,
         color: AppColors.primaryColor,
       ),
       headline5: TextStyle(
         fontFamily: "TTNormsPro",
-        fontSize: 14,
+        fontSize: 14.0,
         fontWeight: FontWeight.w400,
         color: AppColors.secondaryGray,
       ),
       headline6: TextStyle(
         fontFamily: "TTNormsPro",
-        fontSize: 11,
+        fontSize: 11.0,
         fontWeight: FontWeight.w400,
         color: AppColors.secondaryGray,
       ),

@@ -44,9 +44,7 @@ void main() {
 
     expect(controller.products.isEmpty, true);
     await controller.list();
-    final _failure = await AppConfig.instance.streamError.stream.length;
 
-    expect(controller.products.isEmpty, true);
-    expect(_failure, isA<ServerFailure>());
+    AppConfig.instance.streamError.stream.listen((event) => expect(event, isA<ServerFailure>()));
   });
 }

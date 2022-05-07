@@ -1,4 +1,6 @@
 common:
+  moneyPrefix: 'R$'
+  decimalSeparator: ,
   appMessages:
     failure:
       genericListError: Ocorreu um erro ao listar seus objectos :(
