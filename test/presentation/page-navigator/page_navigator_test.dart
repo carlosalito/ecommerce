@@ -14,6 +14,7 @@ import 'package:e_commerce_desafio/presentation/page-navigator/screens/market/ma
 import 'package:e_commerce_desafio/presentation/page-navigator/screens/profile/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:flutter_i18n/loaders/decoders/yaml_decode_strategy.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -21,15 +22,23 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:mockito/mockito.dart';
 
+import '../../fixtures/globals.dart';
 import '../../fixtures/product_fixture.dart';
 import 'screens/market/controller/market_controller_test.mocks.dart';
+import 'screens/market/widget/product_grid_item_test.mocks.dart';
 
 void main() {
   late MaterialApp widgetApp;
   late GetProductsUseCase getProductsUseCase;
+  late DefaultCacheManager _mockDefaultCacheManager;
 
   setUp(() {
     getProductsUseCase = MockGetProductsUseCase();
+    _mockDefaultCacheManager = MockDefaultCacheManager();
+
+    if (!getIt.isRegistered<DefaultCacheManager>()) {
+      getIt.registerSingleton<DefaultCacheManager>(_mockDefaultCacheManager);
+    }
 
     if (!getIt.isRegistered<PageNavigatorController>()) {
       getIt.registerSingleton<PageNavigatorController>(PageNavigatorController());
@@ -78,6 +87,7 @@ void main() {
   testWidgets('When click on page1 button then MarketScreen is showing', (WidgetTester tester) async {
     when(getProductsUseCase.call(0)).thenAnswer((_) async => right(responseProductList));
 
+    await tester.binding.setSurfaceSize(GlobalFixture.testerSize);
     await tester.pumpWidget(widgetApp);
     await tester.pumpAndSettle();
     final buttons = find.byWidgetPredicate((widget) => widget is GButton);
@@ -89,6 +99,16 @@ void main() {
     final widgetTab1 = buttons.at(0).evaluate().single.widget as GButton;
     expect(tab1, findsOneWidget);
     expect(widgetTab1.text, 'Início');
+  });
+
+  testWidgets('When click on page2 button then FavoriteScreen is showing', (WidgetTester tester) async {
+    when(getProductsUseCase.call(0)).thenAnswer((_) async => right(responseProductList));
+
+    await tester.binding.setSurfaceSize(GlobalFixture.testerSize);
+    await tester.pumpWidget(widgetApp);
+    await tester.pumpAndSettle();
+    final buttons = find.byWidgetPredicate((widget) => widget is GButton);
+    expect(buttons, findsNWidgets(4));
 
     await tester.tap(buttons.at(1));
     await tester.pumpAndSettle();
@@ -96,6 +116,16 @@ void main() {
     final widgetTab2 = buttons.at(1).evaluate().single.widget as GButton;
     expect(tab2, findsOneWidget);
     expect(widgetTab2.text, 'Favoritos');
+  });
+
+  testWidgets('When click on page3 button then InvoiceScreen is showing', (WidgetTester tester) async {
+    when(getProductsUseCase.call(0)).thenAnswer((_) async => right(responseProductList));
+
+    await tester.binding.setSurfaceSize(GlobalFixture.testerSize);
+    await tester.pumpWidget(widgetApp);
+    await tester.pumpAndSettle();
+    final buttons = find.byWidgetPredicate((widget) => widget is GButton);
+    expect(buttons, findsNWidgets(4));
 
     await tester.tap(buttons.at(2));
     await tester.pumpAndSettle();
@@ -103,6 +133,16 @@ void main() {
     final widgetTab3 = buttons.at(2).evaluate().single.widget as GButton;
     expect(tab3, findsOneWidget);
     expect(widgetTab3.text, 'Compras');
+  });
+
+  testWidgets('When click on page4 button then ProfileScreen is showing', (WidgetTester tester) async {
+    when(getProductsUseCase.call(0)).thenAnswer((_) async => right(responseProductList));
+
+    await tester.binding.setSurfaceSize(GlobalFixture.testerSize);
+    await tester.pumpWidget(widgetApp);
+    await tester.pumpAndSettle();
+    final buttons = find.byWidgetPredicate((widget) => widget is GButton);
+    expect(buttons, findsNWidgets(4));
 
     await tester.tap(buttons.last);
     await tester.pumpAndSettle();

@@ -33,7 +33,8 @@ class ProductEntity {
   final String image;
   final double price;
   final String unit;
-  final double stock;
+  final int stock;
+  final int? quantity;
   final NutritionalTableEntity? nutritionalTable;
 
   ProductEntity({
@@ -45,5 +46,6 @@ class ProductEntity {
     required this.unit,
     required this.stock,
     this.nutritionalTable,
+    this.quantity,
   });
 }

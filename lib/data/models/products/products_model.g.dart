@@ -45,7 +45,7 @@ ProductModel _$ProductModelFromJson(Map json) => ProductModel(
       priceModel: (json['preco'] as num).toDouble(),
       imageModel: json['imagem'] as String,
       unitModel: json['unidade'] as String,
-      stockModel: (json['estoque'] as num).toDouble(),
+      stockModel: json['estoque'] as int,
       nutritionalTableModel: json['tabelaNutricional'] == null
           ? null
           : NutritionalTableModel.fromJson(json['tabelaNutricional'] as Map),

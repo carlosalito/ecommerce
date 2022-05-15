@@ -16,6 +16,7 @@ class CustomThemes {
       primary: AppColors.primaryColor,
       onSurface: AppColors.secondaryGray,
       background: Colors.white,
+      tertiary: AppColors.primaryGray,
     ),
     textTheme: const TextTheme(
       headline1: TextStyle(

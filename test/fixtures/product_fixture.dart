@@ -57,8 +57,68 @@ ProductEntity fakeProduct = ProductEntity(
   image:
       'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
   price: 1.0,
-  unit: 'kg',
-  stock: 100.0,
+  unit: 'Kg',
+  stock: 100,
+  nutritionalTable: NutritionalTableEntity(
+    moisture: UnitValueEntity(unit: 'un', value: 1.1),
+    energy: UnitValueEntity(unit: 'un', value: 1.1),
+    proteins: UnitValueEntity(unit: 'un', value: 1.1),
+    lipids: UnitValueEntity(unit: 'un', value: 1.1),
+    carbohydrates: UnitValueEntity(unit: 'un', value: 1.1),
+    fibers: UnitValueEntity(unit: 'un', value: 1.1),
+  ),
+);
+
+ProductEntity fakeProductZeroQuant = ProductEntity(
+  id: "4e7b60cc-f706-48d0-816e-4a58d8a84ae9",
+  name: 'Laranja',
+  description: 'descrição da laranja',
+  image:
+      'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
+  price: 1.0,
+  unit: 'Kg',
+  stock: 100,
+  quantity: 0,
+  nutritionalTable: NutritionalTableEntity(
+    moisture: UnitValueEntity(unit: 'un', value: 1.1),
+    energy: UnitValueEntity(unit: 'un', value: 1.1),
+    proteins: UnitValueEntity(unit: 'un', value: 1.1),
+    lipids: UnitValueEntity(unit: 'un', value: 1.1),
+    carbohydrates: UnitValueEntity(unit: 'un', value: 1.1),
+    fibers: UnitValueEntity(unit: 'un', value: 1.1),
+  ),
+);
+
+ProductEntity fakeProductQuant = ProductEntity(
+  id: "4e7b60cc-f706-48d0-816e-4a58d8a84ae9",
+  name: 'Laranja',
+  description: 'descrição da laranja',
+  image:
+      'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
+  price: 1.0,
+  unit: 'Kg',
+  stock: 2,
+  quantity: 1,
+  nutritionalTable: NutritionalTableEntity(
+    moisture: UnitValueEntity(unit: 'un', value: 1.1),
+    energy: UnitValueEntity(unit: 'un', value: 1.1),
+    proteins: UnitValueEntity(unit: 'un', value: 1.1),
+    lipids: UnitValueEntity(unit: 'un', value: 1.1),
+    carbohydrates: UnitValueEntity(unit: 'un', value: 1.1),
+    fibers: UnitValueEntity(unit: 'un', value: 1.1),
+  ),
+);
+
+ProductEntity fakeProductQuantEqualStock = ProductEntity(
+  id: "4e7b60cc-f706-48d0-816e-4a58d8a84ae9",
+  name: 'Laranja',
+  description: 'descrição da laranja',
+  image:
+      'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
+  price: 1.0,
+  unit: 'Kg',
+  stock: 2,
+  quantity: 2,
   nutritionalTable: NutritionalTableEntity(
     moisture: UnitValueEntity(unit: 'un', value: 1.1),
     energy: UnitValueEntity(unit: 'un', value: 1.1),
@@ -78,7 +138,7 @@ List<ProductEntity> fakeProducts = [
           'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
       price: 1.0,
       unit: 'kg',
-      stock: 100.0,
+      stock: 100,
       nutritionalTable: NutritionalTableEntity(
         moisture: UnitValueEntity(unit: 'un', value: 1.1),
         energy: UnitValueEntity(unit: 'un', value: 1.1),
@@ -95,7 +155,7 @@ List<ProductEntity> fakeProducts = [
         'https://firebasestorage.googleapis.com/v0/b/idheaconsultv2.appspot.com/o/mock%2Flaranja_pera.png?alt=media&token=8ea068a9-7324-42c4-9b8a-782e0d27deaf',
     price: 1.0,
     unit: 'kg',
-    stock: 100.0,
+    stock: 100,
     nutritionalTable: NutritionalTableEntity(
       moisture: UnitValueEntity(unit: 'un', value: 1.1),
       energy: UnitValueEntity(unit: 'un', value: 1.1),

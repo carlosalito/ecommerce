@@ -33,5 +33,16 @@ void main() {
     );
   });
 
-  testWidgets('when init render done then a list of products is showing', (WidgetTester tester) async {});
+  testWidgets('when initial render done then a list of products is showing', (WidgetTester tester) async {});
+
+  testWidgets(
+      'when list of products is scrolled to bottom then more products method are called and more products are showing',
+      (WidgetTester tester) async {});
+
+  testWidgets('when initial render done and list method return left error then a error widget is showing',
+      (WidgetTester tester) async {});
+
+  testWidgets(
+      'when list of products is scrolled to bottom then more products method are called and return left error and old products list and error widget is showing',
+      (WidgetTester tester) async {});
 }

@@ -12,13 +12,12 @@ import '../../../mocks/mocks.dart';
 void main() {
   late HttpClient httpClient;
   late ProductDataSource dataSource;
+  setUp(() {
+    httpClient = HttpClientMock();
+    dataSource = ProductDataSourceImpl(http: httpClient);
+  });
 
   group('test product datasource', () {
-    setUp(() {
-      httpClient = HttpClientMock();
-      dataSource = ProductDataSourceImpl(http: httpClient);
-    });
-
     test('When try get list products then return a ResponseList with a ProductEntity data list', () async {
       final _fakeHttpResponse = fakeProductHttpResponse;
       const _page = 0;

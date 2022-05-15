@@ -16,6 +16,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   cached_network_image: ^3.2.0
   flutter_cache_manager: ^3.3.0
+  auto_size_text: ^3.0.0
 
   #db
   hive: ^2.1.0

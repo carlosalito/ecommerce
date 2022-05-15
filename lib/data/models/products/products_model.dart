@@ -85,7 +85,7 @@ class ProductModel extends ProductEntity {
   final String unitModel;
 
   @JsonKey(name: 'estoque')
-  final double stockModel;
+  final int stockModel;
 
   @JsonKey(name: 'tabelaNutricional')
   final NutritionalTableModel? nutritionalTableModel;

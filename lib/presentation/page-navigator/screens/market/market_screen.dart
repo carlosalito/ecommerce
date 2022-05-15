@@ -4,7 +4,11 @@ import 'package:e_commerce_desafio/infra/theme/app_icons.dart';
 import 'package:e_commerce_desafio/presentation/page-navigator/screens/market/controller/market_controller.dart';
 import 'package:e_commerce_desafio/presentation/shared/buttons/custom_action_button.dart';
 import 'package:e_commerce_desafio/presentation/shared/header/app_header.dart';
+import 'package:e_commerce_desafio/presentation/shared/spacers/pacers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'widget/market_product_list.dart';
 
 class MarketScreen extends StatefulWidget {
   const MarketScreen({Key? key}) : super(key: key);
@@ -15,6 +19,7 @@ class MarketScreen extends StatefulWidget {
 
 class _MarketScreenState extends State<MarketScreen> with I18nStatefulTranslate {
   final controller = getIt<MarketController>();
+  final ScrollController scrollController = ScrollController();
 
   @override
   initState() {
@@ -37,6 +42,20 @@ class _MarketScreenState extends State<MarketScreen> with I18nStatefulTranslate 
             onTap: () {},
           ),
         ),
+        const SpacerVertical.normal(),
+        Container(height: 45, color: Colors.black12),
+        const SpacerVertical.half(),
+        Container(height: 45, color: Colors.black12),
+        const SpacerVertical.half(),
+        Observer(builder: (context) {
+          return Expanded(
+            child: MarketProductList(
+              products: controller.products,
+              scrollController: scrollController,
+              onQuantityChange: (_) {},
+            ),
+          );
+        }),
       ],
     );
   }

@@ -18,5 +18,6 @@ class HttpClientMock extends Mock implements HttpClient {
 class ProductDataSourceMock extends Mock implements ProductDataSource {
   @override
   Future<ResponseList<ProductEntity>> getProducts(int page) =>
-      super.noSuchMethod(Invocation.method(#getProducts, [page]), returnValue: Future.value(_FakeResponseList()));
+      super.noSuchMethod(Invocation.method(#getProducts, [page]),
+          returnValue: Future.value(_FakeResponseList<ProductEntity>()));
 }
